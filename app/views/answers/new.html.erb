@@ -1,0 +1,36 @@
+<h2>Create new answer</h2>
+
+
+<%= simple_form_for([@test, @question, @answer], html: {class: 'form-horizontal'}) do |f| %>
+
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+
+        <%= f.input :answer, label: 'ANSWER',
+                    input_html: {style: 'width:600px; height:150px;'} %>
+
+        <%=  check_box_tag :button, label: 'Is Correct' %>
+
+
+        <%= f.hidden_field :question_id, value: @question.id %>
+
+      </div>
+
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-1 col-md-offset-1">
+        <%= f.button :submit, 'Save', class: 'btn btn-success' %>
+      </div>
+    </div>
+
+<% end %>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+<h2><%= link_to 'Create new test', new_test_path %></h2>
+<h2>All tests</h2>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name of test</th>
+    <th>Description</th>
+    <th>Questions</th>
+    <th>Results</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @tests.each do |test| %>
+      <tr>
+        <td><%=link_to test.name, test_path(test) %></td>
+        <td><%= test.description %></td>
+        <td><%= test.questions.count %></td>
+        <td></td>
+        <td>
+          <%= link_to 'Edit', edit_test_path(test), class: 'btn btn-success' %>
+          <%= link_to 'Delete', test_path(test), class: 'btn btn-success',
+                      method: :delete,
+                      data: {confirm: 'Вы уверены?'} %>
+        </td>
+      </tr>
+  <% end %>
+
+</table>

@@ -1,0 +1,34 @@
+
+<h2><%= link_to 'Create new answer', new_test_question_answer_path(@test.id, @question.id) %></h2>
+
+
+<h2>Question:
+  <%= @question.question %>
+</h2>
+
+<h3>Answers</h3>
+
+<table class="table table-striped">
+
+  <tr>
+    <th>Answers</th>
+    <th>is correct</th>
+    <th>actions</th>
+  </tr>
+
+<% @answers.each do |answer| %>
+      <tr>
+    <td><%= answer.answer %></td>
+        <td><%= check_box_tag answer %></td>
+        <td>
+          <%= link_to 'Редактировать', edit_test_question_answer_path(@test, @question, answer), class: 'btn btn-info btn-xs' %>
+          <%= link_to 'Удалить', test_question_answer_path(@test, @question, answer),
+                      method: :delete,
+                      data: {confirm: 'Are you sure?'},
+                      class: 'btn btn-danger btn-xs'
+          %>
+        </td>
+      </tr>
+<% end %>
+
+</table>
